@@ -1,0 +1,15 @@
+*** Variables ***
+${username}       \
+${pwd}            \
+${phone}          15608021158
+${name}           曾可
+${series}         荣威eRX5
+${market}         PHEV国潮荣麟豪华版
+${vehicle_color}    珠光白
+${inner_color}    浅色
+${exchange}       不参加增换购
+${payments}       全款购车
+${deposit}        1000
+${mark}           RF自动化定金订单
+${factor}         0.8
+${swipe_time}     500

@@ -1,0 +1,50 @@
+*** Settings ***
+Library           MyLibrary
+Resource          ./页面元素.txt
+Resource          ../LoginPage/登陆业务.txt
+Resource          ../公共部分/公共元素.txt
+
+*** Keywords ***
+新建定金订单
+    [Arguments]    ${username}    ${pwd}    ${phone}    ${name}    ${series}    ${market}    ${vehicle_color}    ${inner_color}    ${exchange}    ${payments}    ${deposit}    ${mark}    ${factor}    ${swipe_time}
+    是否登陆    ${username}    ${pwd}
+    强制等待    3
+    应用
+    点击定金订单
+    强制等待    5
+    点击线下订单
+    强制等待    3
+    点击新建
+    强制等待    2
+    输入客户电话    ${phone}
+    输入客户姓名    ${name}
+    点击车系
+    强制等待    2
+    选择车系    ${series}    ${factor}    ${swipe_time}
+    确认选项
+    强制等待    2
+    点击市场名称
+    选择车型    ${market}    ${factor}    ${swipe_time}
+    确认选项
+    强制等待    1
+    点击车辆颜色
+    选择车辆颜色    ${vehicle_color}    ${factor}    ${swipe_time}
+    确认选项
+    强制等待    1
+    点击内饰颜色
+    选择内饰颜色    ${inner_color}    ${factor}    ${swipe_time}
+    确认选项
+    强制等待    1
+    点击增换购类型
+    选择换购类型    ${exchange}    ${factor}    ${swipe_time}
+    确认选项
+    强制等待    2
+    滑动一屏
+    输入定金金额    ${deposit}
+    强制等待    2
+    点击支付方式
+    选择支付方式    ${payments}    ${factor}    ${swipe_time}
+    确认选项
+    输入备注    ${mark}
+    点击提交
+    强制等待    5

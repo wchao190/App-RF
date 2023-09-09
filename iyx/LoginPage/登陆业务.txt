@@ -1,0 +1,29 @@
+*** Settings ***
+Library           MyLibrary
+Resource          ./页面元素.txt
+Resource          ../公共部分/公共元素.txt
+
+*** Keywords ***
+是否登陆
+    [Arguments]    ${username}    ${pwd}
+    [Documentation]    contains(@text,'阿里拍卖')
+    启动App
+    ${allow3}    run keyword and return status    wait until page contains    允许    10
+    run keyword if    '${allow3}'=='True'    click element    xpath=//android.widget.Button[contains(@text,'允许')]
+    强制等待    3
+    ${allow1}    run keyword and return status    wait until page contains    允许    10
+    run keyword if    '${allow1}'=='True'    click element    xpath=//android.widget.Button[contains(@text,'允许')]
+    强制等待    3
+    ${welcome1}    run keyword and return status    wait until page contains    欢迎
+    Run keyword If    '${welcome1}'=='True'    输入用户名密码    ${username}    ${pwd}
+    ...    ELSE    应用
+
+输入用户名密码
+    [Arguments]    ${username}    ${pwd}
+    输入用户名    ${username}
+    输入密码    ${pwd}
+    点击登陆
+    强制等待    2
+    暂不拍摄
+    强制等待    2
+    知道了

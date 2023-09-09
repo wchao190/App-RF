@@ -1,0 +1,111 @@
+*** Settings ***
+Resource          ../公共部分/公共元素.txt
+Library           MyLibrary
+
+*** Keywords ***
+点击定金订单
+    ${cash_order}    run keyword and return status    wait until page contains    定金定单_test
+    run keyword if    '${cash_order}'=='True'    click element    xpath=//android.widget.TextView[@text='定金定单_test']
+
+点击线下订单
+    ${offline}    run keyword and return status    wait until page contains    线下订单
+    run keyword if    '${offline}'=='True'    click element    xpath=//android.view.View[contains(@text,'线下订单')]
+
+点击新建
+    ${new_order}    run keyword and return status    wait until page contains element    id=com.xxx.joywok.uat:id/textview
+    run keyword if    '${new_order}'=='True'    click element    id=com.xxx.joywok.uat:id/textview
+
+输入客户电话
+    [Arguments]    ${phone}
+    ${m}    run keyword and return status    wait until page contains element    xpath=//*[@resource-id='app']/android.view.View/android.view.View[1]/android.view.View[3]/android.widget.EditText
+    run keyword if    '${m}'=='True'    Input Text    xpath=//*[@resource-id='app']/android.view.View/android.view.View[1]/android.view.View[3]/android.widget.EditText    ${phone}
+
+输入客户姓名
+    [Arguments]    ${name}
+    ${n}    run keyword and return status    wait until page contains element    xpath=//*[@resource-id='app']/android.view.View/android.view.View[2]/android.view.View[3]/android.widget.EditText
+    run keyword if    '${n}'=='True'    Input Text    xpath=//*[@resource-id='app']/android.view.View/android.view.View[2]/android.view.View[3]/android.widget.EditText    ${name}
+
+点击车系
+    ${ser}    run keyword and return status    wait until page contains element    xpath=//*[@resource-id='app']/android.view.View/android.view.View[3]/android.view.View[3]/android.widget.EditText
+    run keyword if    '${ser}'=='True'    click element    xpath=//*[@resource-id='app']/android.view.View/android.view.View[3]/android.view.View[3]/android.widget.EditText
+
+选择车系
+    [Arguments]    ${series}    ${factor}    ${swipe_time}
+    wait until page contains element    xpath=//*[@resource-id='app']/android.view.View[3]/android.view.View/android.view.View/android.view.View[3]
+    wait until page contains element    xpath=//*[@resource-id='app']/android.view.View[3]/android.view.View/android.view.View/android.view.View[1]/android.widget.ListView/android.widget.Button
+    ${option_view}    get webelement    xpath=//*[@resource-id='app']/android.view.View[3]/android.view.View/android.view.View/android.view.View[3]
+    log    ${option_view}
+    log    ${series}
+    swipe option    ${option_view}    ${series}    xpath=//*[@resource-id='app']/android.view.View[3]/android.view.View/android.view.View/android.view.View[1]/android.widget.ListView/android.widget.Button    ${factor}    ${swipe_time}
+
+点击市场名称
+    ${mk}    run keyword and return status    wait until page contains element    xpath=//*[@resource-id='app']/android.view.View/android.view.View[4]/android.view.View[3]/android.widget.EditText
+    run keyword if    '${mk}'=='True'    click element    xpath=//*[@resource-id='app']/android.view.View/android.view.View[4]/android.view.View[3]/android.widget.EditText
+
+选择车型
+    [Arguments]    ${market}    ${factor}    ${swipe_time}
+    wait until page contains element    xpath=//*[@resource-id='app']/android.view.View[3]/android.view.View/android.view.View/android.view.View[3]
+    wait until page contains element    xpath=//*[@resource-id='app']/android.view.View[3]/android.view.View/android.view.View/android.view.View[1]/android.widget.ListView/android.widget.Button
+    ${option_view}    get webelement    xpath=//*[@resource-id='app']/android.view.View[3]/android.view.View/android.view.View/android.view.View[3]
+    swipe option    ${option_view}    ${market}    xpath=//*[@resource-id='app']/android.view.View[3]/android.view.View/android.view.View/android.view.View[1]/android.widget.ListView/android.widget.Button    ${factor}    ${swipe_time}
+
+点击车辆颜色
+    ${co}    run keyword and return status    wait until page contains element    xpath=//*[@resource-id='app']/android.view.View/android.view.View[5]/android.view.View[3]/android.widget.EditText
+    run keyword if    '${co}'=='True'    click element    xpath=//*[@resource-id='app']/android.view.View/android.view.View[5]/android.view.View[3]/android.widget.EditText
+
+选择车辆颜色
+    [Arguments]    ${vehicle_color}    ${factor}    ${swipe_time}
+    wait until page contains element    xpath=//*[@resource-id='app']/android.view.View[3]/android.view.View/android.view.View/android.view.View[3]
+    wait until page contains element    xpath=//*[@resource-id='app']/android.view.View[3]/android.view.View/android.view.View/android.view.View[1]/android.widget.ListView/android.widget.Button
+    ${option_view}    get webelement    xpath=//*[@resource-id='app']/android.view.View[3]/android.view.View/android.view.View/android.view.View[3]
+    swipe option    ${option_view}    ${vehicle_color}    xpath=//*[@resource-id='app']/android.view.View[3]/android.view.View/android.view.View/android.view.View[1]/android.widget.ListView/android.widget.Button    ${factor}    ${swipe_time}
+
+点击内饰颜色
+    ${inn}    run keyword and return status    wait until page contains element    xpath=//*[@resource-id='app']/android.view.View/android.view.View[6]/android.view.View[3]/android.widget.EditText
+    run keyword if    '${inn}'=='True'    click element    xpath=//*[@resource-id='app']/android.view.View/android.view.View[6]/android.view.View[3]/android.widget.EditText
+
+选择内饰颜色
+    [Arguments]    ${inner_color}    ${factor}    ${swipe_time}
+    wait until page contains element    xpath=//*[@resource-id='app']/android.view.View[3]/android.view.View/android.view.View/android.view.View[3]
+    wait until page contains element    xpath=//*[@resource-id='app']/android.view.View[3]/android.view.View/android.view.View/android.view.View[1]/android.widget.ListView/android.widget.Button
+    ${option_view}    get webelement    xpath=//*[@resource-id='app']/android.view.View[3]/android.view.View/android.view.View/android.view.View[3]
+    swipe option    ${option_view}    ${inner_color}    xpath=//*[@resource-id='app']/android.view.View[3]/android.view.View/android.view.View/android.view.View[1]/android.widget.ListView/android.widget.Button    ${factor}    ${swipe_time}
+
+点击增换购类型
+    ${ex}    run keyword and return status    wait until page contains element    xpath=//*[@resource-id='app']/android.view.View/android.view.View[9]/android.view.View[3]/android.widget.EditText
+    run keyword if    '${ex}'=='True'    click element    xpath=//*[@resource-id='app']/android.view.View/android.view.View[9]/android.view.View[3]/android.widget.EditText
+
+选择换购类型
+    [Arguments]    ${exchange}    ${factor}    ${swipe_time}
+    wait until page contains element    xpath=//*[@resource-id='app']/android.view.View[3]/android.view.View/android.view.View/android.view.View[3]
+    wait until page contains element    xpath=//*[@resource-id='app']/android.view.View[3]/android.view.View/android.view.View/android.view.View[1]/android.widget.ListView/android.widget.Button
+    ${option_view}    get webelement    xpath=//*[@resource-id='app']/android.view.View[3]/android.view.View/android.view.View/android.view.View[3]
+    swipe option    ${option_view}    ${exchange}    xpath=//*[@resource-id='app']/android.view.View[3]/android.view.View/android.view.View/android.view.View[1]/android.widget.ListView/android.widget.Button    ${factor}    ${swipe_time}
+
+点击支付方式
+    ${method}    run keyword and return status    wait until page contains element    xpath=//*[@resource-id='app']/android.view.View//*[@text='支付方式']/following-sibling::android.view.View[1]/android.widget.EditText
+    run keyword if    '${method}'=='True'    click element    xpath=//*[@resource-id='app']/android.view.View//*[@text='支付方式']/following-sibling::android.view.View[1]/android.widget.EditText
+
+选择支付方式
+    [Arguments]    ${payments}    ${factor}    ${swipe_time}
+    wait until page contains element    xpath=//*[@resource-id='app']/android.view.View[3]/android.view.View/android.view.View/android.view.View[3]
+    wait until page contains element    xpath=//*[@resource-id='app']/android.view.View[3]/android.view.View/android.view.View/android.view.View[1]/android.widget.ListView/android.widget.Button
+    ${option_view}    get webelement    xpath=//*[@resource-id='app']/android.view.View[3]/android.view.View/android.view.View/android.view.View[3]
+    swipe option    ${option_view}    ${payments}    xpath=//*[@resource-id='app']/android.view.View[3]/android.view.View/android.view.View/android.view.View[1]/android.widget.ListView/android.widget.Button    ${factor}    ${swipe_time}
+
+输入定金金额
+    [Arguments]    ${deposit}
+    ${cash}    run keyword and return status    wait until page contains element    xpath=//*[@resource-id='app']/android.view.View//*[@text='定金金额']/following-sibling::android.view.View[1]/android.widget.EditText
+    run keyword if    '${cash}'=='True'    Input Text    xpath=//*[@resource-id='app']/android.view.View//*[@text='定金金额']/following-sibling::android.view.View[1]/android.widget.EditText    ${deposit}
+
+输入备注
+    [Arguments]    ${mark}
+    ${mrk}    run keyword and return status    wait until page contains element    xpath=//*[@resource-id='app']/android.view.View//*[@text='备注']/following-sibling::android.view.View[1]/android.widget.EditText
+    run keyword if    '${mrk}'=='True'    Input Text    xpath=//*[@resource-id='app']/android.view.View//*[@text='备注']/following-sibling::android.view.View[1]/android.widget.EditText    ${mark}
+
+点击提交
+    ${sb}    run keyword and return status    wait until page contains element    xpath=//*[@resource-id='app']/android.view.View/android.widget.Button
+    run keyword if    '${sb}'=='True'    click element    xpath=//*[@resource-id='app']/android.view.View/android.widget.Button
+
+滑动一屏
+    swipe by percent    50    90    50    10

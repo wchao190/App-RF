@@ -1,0 +1,28 @@
+*** Settings ***
+Library           MyLibrary
+Resource          ../公共部分/公共数据.txt
+Resource          ../公共部分/公共元素.txt
+
+*** Keywords ***
+输入用户名
+    [Arguments]    ${username}
+    ${name}    run keyword and return status    wait until page contains element    id=com.xxx.joywok.uat:id/editText_account
+    run keyword if    '${name}'=='True'    Clear Text    id=com.xxx.joywok.uat:id/editText_account
+    Input text    id=com.xxx.joywok.uat:id/editText_account    ${username}
+
+输入密码
+    [Arguments]    ${pwd}
+    ${pd}    run keyword and return status    wait until page contains element    id=com.xxx.joywok.uat:id/editText_password
+    run keyword if    '${pd}'=='True'    Input PassWord    id=com.xxx.joywok.uat:id/editText_password    ${pwd}
+
+点击登陆
+    ${login}    run keyword and return status    wait until page contains element    id=com.xxx.joywok.uat:id/layout_button_login
+    run keyword if    '${login}'=='True'    click element    id=com.xxx.joywok.uat:id/layout_button_login
+
+暂不拍摄
+    ${snapshot}    run keyword and return status    wait until page contains element    id=com.xxx.joywok.uat:id/btn_no_bind
+    run keyword if    '${snapshot}'=='True'    click element    id=com.xxx.joywok.uat:id/btn_no_bind
+
+知道了
+    ${know}    run keyword and return status    wait until page contains element    id=com.xxx.joywok.uat:id/btn_konw
+    run keyword if    '${know}'=='True'    click element    id=com.xxx.joywok.uat:id/btn_konw
