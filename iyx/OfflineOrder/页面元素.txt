@@ -12,8 +12,8 @@ Library           MyLibrary
     run keyword if    '${offline}'=='True'    click element    xpath=//android.view.View[contains(@text,'线下订单')]
 
 点击新建
-    ${new_order}    run keyword and return status    wait until page contains element    id=com.xxx.joywok.uat:id/textview
-    run keyword if    '${new_order}'=='True'    click element    id=com.xxx.joywok.uat:id/textview
+    ${new_order}    run keyword and return status    wait until page contains element    id=com.xxx.xxx.uat:id/textview
+    run keyword if    '${new_order}'=='True'    click element    id=com.xxx.xxx.uat:id/textview
 
 输入客户电话
     [Arguments]    ${phone}
