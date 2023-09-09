@@ -8,7 +8,7 @@ Resource          ../公共部分/公共元素.txt
     [Arguments]    ${username}
     ${name}    run keyword and return status    wait until page contains element    id=com.xxx.xxx.uat:id/editText_account
     run keyword if    '${name}'=='True'    Clear Text    id=com.xxx.xxx.uat:id/editText_account
-    Input text    id=com.xxx.joywok.uat:id/editText_account    ${username}
+    Input text    id=com.xxx.xxx.uat:id/editText_account    ${username}
 
 输入密码
     [Arguments]    ${pwd}
