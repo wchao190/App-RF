@@ -13,5 +13,5 @@ Library           MyLibrary
     Click Element    xpath=//*[@resource-id='app']/android.view.View[3]/android.view.View/android.widget.Button[2]
 
 应用
-    ${apply}    run keyword and return status    wait until page contains element    xpath=//*[@resource-id='com.xxx.joywok.uat:id/linearLayout']/android.widget.RelativeLayout[4]
-    run keyword if    '${apply}'=='True'    click element    xpath=//*[@resource-id='com.xxx.joywok.uat:id/linearLayout']/android.widget.RelativeLayout[4]
+    ${apply}    run keyword and return status    wait until page contains element    xpath=//*[@resource-id='com.xxx.xxx.uat:id/linearLayout']/android.widget.RelativeLayout[4]
+    run keyword if    '${apply}'=='True'    click element    xpath=//*[@resource-id='com.xxx.xxx.uat:id/linearLayout']/android.widget.RelativeLayout[4]
